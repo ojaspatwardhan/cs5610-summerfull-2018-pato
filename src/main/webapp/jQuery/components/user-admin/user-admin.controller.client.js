@@ -6,7 +6,12 @@
   var repeat;
 
   function main() {
-    var promise = fetch("http://localhost:8080/api/user");
+
+    // Local Host
+    // var promise = fetch("http://localhost:8080/api/user");
+
+    // Heroku
+    var promise = fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/user")
 
     tbody = $("tbody");
     repeat = $(".user-credentials")
@@ -30,13 +35,23 @@
       password: password
     };
 
-    fetch("http://localhost:8080/api/user", {
+    // Heroku
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/user", {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
         "content-type": "application/json"
       }
     });
+
+    // Local Host
+    // fetch("http://localhost:8080/api/user", {
+    //   method: "POST",
+    //   body: JSON.stringify(user),
+    //   headers: {
+    //     "content-type": "application/json"
+    //   }
+    // });
   }
 
   function renderUsers(users) {
