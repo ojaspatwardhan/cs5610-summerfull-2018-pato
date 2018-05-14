@@ -2,8 +2,12 @@
   'use strict';
   jQuery(main);
 
+  var users = fetch("http://localhost:8080/api/user");
+
   function main() {
-    var h1 = jQuery("h1");
-    h1.css("color", "blue");
+  }
+
+  function renderUsers(users) {
+
   }
 }());
