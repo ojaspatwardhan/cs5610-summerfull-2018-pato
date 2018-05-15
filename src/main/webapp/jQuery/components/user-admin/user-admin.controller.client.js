@@ -28,15 +28,20 @@
 
   }
 
+  function findUserByUsername(username) {
+    var userService = new UserServiceClient();
+    userService.findUserByUsername(username).then(renderUsers);
+  }
+
   function findAllUsers() {
     var userService = new UserServiceClient();
     userService.findAllUsers().then(renderUsers);
   }
 
-  function findUserById(event) {
-    var userService = new UserServiceClient();
-    userService.findUserById(userId).then(renderUser);
-  }
+  // function findUserById(event) {
+  //   var userService = new UserServiceClient();
+  //   userService.findUserById(userId).then(renderUser);
+  // }
 
   function createUser() {
 

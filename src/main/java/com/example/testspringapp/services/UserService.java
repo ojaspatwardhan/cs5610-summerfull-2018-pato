@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.testspringapp.models.User;
 import com.example.testspringapp.repositories.UserRepository;
@@ -62,6 +64,11 @@ public class UserService {
 			return user;
 		}
 		return null;
+	}
+	
+	@RequestMapping(value = "/api/user/findUserByUsername/{username}", method = RequestMethod.GET)
+	public List<User> findUserByUsername(@PathVariable("username") String username) {
+		return (List<User>) repository.findUserByUsername(username);
 	}
 	
 
