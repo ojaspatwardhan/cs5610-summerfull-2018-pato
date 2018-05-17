@@ -15,7 +15,9 @@
   function init() {
     var userService = new UserServiceClient();
 
-    findUserById(2);
+    getProfile();
+
+    // findUserById(272);
 
     $email = $("#email");
     $username = $("#username");
@@ -26,6 +28,14 @@
     $lastName = $("#lastName");
     $updateButton = $("#updateButton").click(updateUser);
 
+  }
+
+  function getProfile() {
+    var userService = new UserServiceClient();
+
+    userService.getProfile().then(function(response) {
+      alert(JSON.stringify(response));
+    });
   }
 
   function updateUser() {
@@ -41,7 +51,7 @@
       username: $username.val()
     };
 
-    userService.updateUser(user, 2).then(success);
+    userService.updateUser(user, 272).then(success);
   }
 
   function success(response) {

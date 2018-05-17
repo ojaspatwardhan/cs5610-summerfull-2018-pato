@@ -73,15 +73,28 @@ public class UserService {
 		return (List<User>) repository.findUserByUsername(username);
 	}
 	
-	@RequestMapping(value = "/api/register")
+	@CrossOrigin(origins = "http://localhost:8080")
+	@GetMapping("/api/profile")
+	public User getProfile(HttpSession session) {
+		System.out.println("Inside getProfile");
+		System.out.println(session.getAttribute("id"));
+		return (User)session.getAttribute("id");
+	}
+	
+	@PostMapping("/api/register")
 	public User register(@RequestBody User user, HttpSession session) {
-		session.setAttribute("id", user);
 		List<User> data = repository.findUserByUsername(user.getUsername());
 		if(data.size() == 0) {
-			return repository.save(user);
+			System.out.println(user);
+			session.setAttribute("id", user);
+			System.out.println("Getting Attribute");
+			System.out.println(session.getAttribute("id"));
+			repository.save(user);
+			return user;
 		}
 		else {
-			return null;
+			System.out.println(user);
+			return user;
 		}
 	}
 }

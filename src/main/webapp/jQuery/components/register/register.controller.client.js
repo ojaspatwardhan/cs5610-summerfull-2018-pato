@@ -24,8 +24,20 @@
       userService.register(user).then(success);
     }
 
-    function success(users) {
-      alert(users.length);
+    function resetValues() {
+      $("#usernameFld").val("");
+      $("#passwordFld").val("");
+      $("#verifyPasswordFld").val("");
+    }
+
+    function success(response) {
+      if(response.id == 0) {
+        alert("Username already exists");
+        resetValues();
+      }
+      else {
+        window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
+      }
     }
   }
 }());

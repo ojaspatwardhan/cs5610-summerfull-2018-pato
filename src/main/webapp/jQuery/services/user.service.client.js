@@ -6,8 +6,17 @@ function UserServiceClient() {
    this.updateUser = updateUser;
    this.findUserByUsername = findUserByUsername;
    this.register = register;
+   this.getProfile = getProfile;
    this.url ='http://localhost:8080/api/user';
    var self = this;
+
+   function getProfile() {
+     return fetch("http://localhost:8080/api/profile", {
+       credentials: 'same-origin'
+     }).then(function (response) {
+       return response.json();
+     });
+   }
 
    function register(user) {
      return fetch("http://localhost:8080/api/register", {
@@ -16,6 +25,8 @@ function UserServiceClient() {
        headers: {
          "content-type": "application/json"
        }
+     }).then(function (response) {
+       return response.json();
      });
    }
 
