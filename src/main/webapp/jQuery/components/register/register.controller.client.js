@@ -25,7 +25,7 @@
     }
 
     function success(users) {
-      alert();
+      alert(users.length);
     }
   }
 }());
