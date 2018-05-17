@@ -5,9 +5,33 @@ function UserServiceClient() {
    this.deleteUser = deleteUser;
    this.updateUser = updateUser;
    this.findUserByUsername = findUserByUsername;
-   this.url =
-'http://localhost:8080/api/user';
+   this.register = register;
+   this.url ='http://localhost:8080/api/user';
    var self = this;
+
+   function register(user) {
+     return fetch("http://localhost:8080/api/register", {
+       method: "POST",
+       body: JSON.stringify(user),
+       headers: {
+         "content-type": "application/json"
+       }
+     });
+   }
+
+//    function register(User) {
+//     var registerRes = $.ajax({
+//         async: false,
+//         type: "POST",
+//         contentType : 'application/json; charset=utf-8',
+//         dataType : 'json',
+//         url: "/api/register",
+//         data: JSON.stringify(User),
+//     })
+//
+//     return registerRes.responseJSON
+//
+// }
 
    function findUserById(userId) {
      return fetch(self.url + "/" + userId).then(function(response) {
@@ -29,7 +53,6 @@ function UserServiceClient() {
          "content-type": "application/json"
        }
      }).then(function(response) {
-       console.log(response.bodyUsed);
        if(response.status == 200) {
          return response.json();
        }

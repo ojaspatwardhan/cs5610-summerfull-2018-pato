@@ -3,6 +3,8 @@ package com.example.testspringapp.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -71,5 +73,15 @@ public class UserService {
 		return (List<User>) repository.findUserByUsername(username);
 	}
 	
-
+	@RequestMapping(value = "/api/register")
+	public User register(@RequestBody User user, HttpSession session) {
+		session.setAttribute("id", user);
+		List<User> data = repository.findUserByUsername(user.getUsername());
+		if(data.size() == 0) {
+			return repository.save(user);
+		}
+		else {
+			return null;
+		}
+	}
 }

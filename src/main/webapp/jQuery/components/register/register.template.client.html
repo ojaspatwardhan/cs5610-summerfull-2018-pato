@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- jQuery CDN -->
+
+<!--  Bootstrap CDN files start -->
+<!-- Bootstrap JavaScript CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<!-- Bootstrap CDN files end -->
+<!-- Custom JavaScript -->
+<script type="text/javascript" src="../user-admin/user-admin.controller.client.js"></script>
+<script type="text/javascript" src="../../services/user.service.client.js"></script>
+<script type="text/javascript" src="register.controller.client.js"></script>
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class = "container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>Sign Up</h2>
+      </div>
+      <form>
+        <div class="form-group">
+          <label for="usernameFld">Username</label>
+          <input id="usernameFld" class="form-control" type="text" placeholder="Username" />
+        </div>
+        <div class="form-group">
+          <label for="passwordFld">Password</label>
+          <input class="form-control" id="passwordFld" type="password" placeholder="Password" />
+        </div>
+        <div class="form-group">
+          <label for="verifyPasswordFld">Verify Password</label>
+          <input class="form-control" id="verifyPasswordFld" type="password" placeholder="Re-enter password" />
+        </div>
+        <button id="registerButton" type="button" class="btn-sm btn-outline-success">Register</button>
+        <a href="#"><small>Already have an account? Log in</small></a>
+      </form>
+    </div>
+	</div>
+</body>
+</html>
