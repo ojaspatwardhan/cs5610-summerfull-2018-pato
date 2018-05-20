@@ -14,7 +14,14 @@ public class User {
 	private String phone;
 	private String dob;
 	private String email;
+	private String resetToken;
 	
+	public String getResetToken() {
+		return resetToken;
+	}
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
+	}
 	public String getEmail() {
 		return email;
 	}

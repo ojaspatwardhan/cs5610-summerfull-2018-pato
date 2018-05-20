@@ -21,7 +21,7 @@
 
     function register(user) {
       var userService = new UserServiceClient();
-      userService.register(user).then(success);
+      userService.register(user,success);
     }
 
     function resetValues() {

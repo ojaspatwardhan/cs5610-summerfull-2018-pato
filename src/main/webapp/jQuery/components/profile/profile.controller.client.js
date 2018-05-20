@@ -10,6 +10,7 @@
   var $firstName;
   var $lastName;
   var $updateButton;
+  var id;
 
 
   function init() {
@@ -33,13 +34,16 @@
   function getProfile() {
     var userService = new UserServiceClient();
 
-    userService.getProfile().then(function(response) {
-      alert(JSON.stringify(response));
+    userService.getProfile(function(response){
+      findUserById(response.id)
+      id = response.id;
     });
   }
 
   function updateUser() {
     var userService = new UserServiceClient();
+
+    alert(id);
 
     var user = {
       firstName: $firstName.val(),
@@ -51,7 +55,7 @@
       username: $username.val()
     };
 
-    userService.updateUser(user, 272).then(success);
+    userService.updateUser(user, id).then(success);
   }
 
   function success(response) {

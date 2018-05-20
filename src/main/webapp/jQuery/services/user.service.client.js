@@ -7,28 +7,84 @@ function UserServiceClient() {
    this.findUserByUsername = findUserByUsername;
    this.register = register;
    this.getProfile = getProfile;
+   this.login = login;
+   this.findUserByEmail = findUserByEmail;
    this.url ='http://localhost:8080/api/user';
    var self = this;
 
-   function getProfile() {
-     return fetch("http://localhost:8080/api/profile", {
-       credentials: 'same-origin'
-     }).then(function (response) {
-       return response.json();
-     });
+   function findUserByEmail(email, callback) {
+     $.ajax({
+       async: false,
+       method: "GET",
+       contentType: "application/json; charset=utf-8",
+       url: "http://localhost:8080/api/resetPassword/" + email,
+       success: callback
+     })
    }
 
-   function register(user) {
-     return fetch("http://localhost:8080/api/register", {
-       method: "POST",
-       body: JSON.stringify(user),
-       headers: {
-         "content-type": "application/json"
-       }
-     }).then(function (response) {
-       return response.json();
-     });
+
+   // function login(username, password) {
+   //   return fetch("http://localhost:8080/api/login/findUserByUsernameAndPassword/" + username + "/" + password).then(function (response) {
+   //     if(response.headers.get("content-length") != 0) {
+   //       return response.json();
+   //     }
+   //     else {
+   //       return null;
+   //     }
+   //   });
+   // }
+
+   function login(username, password, callback) {
+     $.ajax({
+       async: false,
+       method: "GET",
+       contentType: "application/json; charset=utf-8",
+       url: "http://localhost:8080/api/login/findUserByUsernameAndPassword/" + username + "/" + password,
+       success: callback,
+     })
    }
+
+   function getProfile(callback) {
+     $.ajax({
+              async: false,
+              method: "GET",
+              contentType: "application/json; charset=utf-8",
+              url: "http://localhost:8080/api/profile",
+              success: callback,
+          });
+   }
+
+   // function getProfile() {
+   //   return fetch("http://localhost:8080/api/profile", {
+   //     credentials: 'same-origin'
+   //   }).then(function (response) {
+   //     return response.json();
+   //   });
+   // }
+
+   function register(user, callback) {
+     $.ajax({
+       async: false,
+       type: "POST",
+       contentType : 'application/json; charset=utf-8',
+       dataType : 'json',
+       url: "/api/register",
+       data: JSON.stringify(user),
+       success: callback
+     })
+   }
+
+   // function register(user) {
+   //   return fetch("http://localhost:8080/api/register", {
+   //     method: "POST",
+   //     body: JSON.stringify(user),
+   //     headers: {
+   //       "content-type": "application/json"
+   //     }
+   //   }).then(function (response) {
+   //     return response.json();
+   //   });
+   // }
 
 //    function register(User) {
 //     var registerRes = $.ajax({

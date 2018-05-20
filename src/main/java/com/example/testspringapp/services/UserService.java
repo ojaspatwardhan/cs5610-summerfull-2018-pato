@@ -2,6 +2,7 @@ package com.example.testspringapp.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.example.testspringapp.models.User;
 import com.example.testspringapp.repositories.UserRepository;
 
@@ -81,6 +83,14 @@ public class UserService {
 		return (User)session.getAttribute("id");
 	}
 	
+	@RequestMapping(value = "/api/login/findUserByUsernameAndPassword/{username}/{password}", method = RequestMethod.GET)
+	public User findUserByUsernameAndPassword(@PathVariable("username") String username, @PathVariable("password") String password, HttpSession session) {
+		User user = (User)repository.findUserByUsernameAndPassword(username, password);
+		System.out.println(user);
+		session.setAttribute("id", user);
+		return user;
+	}
+	
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user, HttpSession session) {
 		List<User> data = repository.findUserByUsername(user.getUsername());
@@ -95,6 +105,24 @@ public class UserService {
 		else {
 			System.out.println(user);
 			return user;
+		}
+	}
+	
+	@GetMapping("/api/resetPassword/{email}")
+	public User findUserByEmail(@PathVariable("email") String email) {
+		User user =  (User)repository.findUserByEmail(email);
+		if(user != null) {
+			System.out.println(user);
+			user.setResetToken(UUID.randomUUID().toString());
+			repository.save(user);
+			emailService sendMail = new emailService();
+			String message = sendMail.email(user);
+			System.out.println(message);
+			return user;
+		}
+		else {
+			System.out.println("User does not exist");
+			return null;
 		}
 	}
 }
