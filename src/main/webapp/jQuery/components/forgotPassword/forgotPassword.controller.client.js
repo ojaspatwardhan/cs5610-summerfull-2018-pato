@@ -15,7 +15,15 @@
 
   function resetPassword(user) {
     var userService = new UserServiceClient();
-    userService.findUserByEmail(user.email);
+    userService.findUserByEmail(user.email, redirect);
+  }
+
+  function redirect() {
+    // localhost location
+    // window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
+
+    // Heroku Location
+    window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html"
   }
 
 }());
