@@ -13,7 +13,7 @@ import com.example.testspringapp.models.User;
 public class emailService {
 	public String email(User user) {
 		
-		String receiver = "ojas.patwardhan@gmail.com"; //user.getEmail();
+		String receiver = user.getEmail(); //"ojas.patwardhan@gmail.com";
 		String sender = "webdev.summer.full@gmail.com";
 		String username = "webdev.summer.full";
 		String password = "9Wjet124";
@@ -53,7 +53,7 @@ public class emailService {
 
 		} catch (MessagingException e) {
 //			throw new RuntimeException(e);
-			return "Something is wrong";
+			return "Something went wrong";
 		}
 	}
 }

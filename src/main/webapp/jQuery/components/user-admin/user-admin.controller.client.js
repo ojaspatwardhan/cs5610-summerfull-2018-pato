@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  jQuery(main);
+  $(main);
 
   var tbody;
   var repeat;
@@ -15,9 +15,13 @@
     // var promise = fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/user")
 
     tbody = $("tbody");
-    repeat = $(".user-credentials")
+    repeat = $(".user-credentials");
 
-    findAllUsers();
+    if(window.location.href == "http://localhost:8080/jQuery/components/user-admin/user-admin.template.client.html" || window.location.href == "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/user-admin/user-admin.template.client.html") {
+      findAllUsers();
+    }
+
+    // findAllUsers();
 
     $("#createNewUser").click(createUser);
     $("#deleteButton").click(deleteUser);
@@ -80,6 +84,10 @@
       newEntry.find(".firstName").html(user.firstName);
       newEntry.find(".lastName").html(user.lastName);
       newEntry.find(".password").html(user.password);
+      newEntry.find(".email").html(user.email);
+      newEntry.find(".phone").html(user.phone);
+      newEntry.find(".role").html(user.role);
+      newEntry.find(".dob").html(user.dob);
       newEntry.find(".deleteButton").click(deleteUser);
       tbody.append(newEntry);
     }

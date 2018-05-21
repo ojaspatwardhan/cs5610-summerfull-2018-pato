@@ -48,10 +48,23 @@
 
   function success(response) {
     if(response.length != 0) {
-      window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
+      if(response.role == "Student" || response.role == "Faculty") {
+        // localhost location
+        window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
+
+        // Heroku Location
+        // window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html";
+      }
+      else {
+        // localhost Location
+        window.location = "http://localhost:8080/jQuery/components/user-admin/user-admin.template.client.html";
+
+        // Heroku Location
+        // window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/user-admin/user-admin.template.client.html";
+      }
     }
     else {
-      alert("Enter valid username and password");
+      alert("Please enter valid username and password");
       resetValues();
     }
   }

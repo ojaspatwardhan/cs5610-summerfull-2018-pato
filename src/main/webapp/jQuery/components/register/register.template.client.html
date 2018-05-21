@@ -23,26 +23,41 @@
 <body>
 	<div class = "container-fluid">
     <div class="row">
-      <div class="col-md-12 text-center">
+      <div class="col-md-4">
         <h2>Sign Up</h2>
       </div>
-      <form>
-        <div class="form-group">
-          <label for="usernameFld">Username</label>
-          <input id="usernameFld" class="form-control" type="text" placeholder="Username" />
-        </div>
-        <div class="form-group">
-          <label for="passwordFld">Password</label>
-          <input class="form-control" id="passwordFld" type="password" placeholder="Password" />
-        </div>
-        <div class="form-group">
-          <label for="verifyPasswordFld">Verify Password</label>
-          <input class="form-control" id="verifyPasswordFld" type="password" placeholder="Re-enter password" />
-        </div>
-        <button id="registerButton" type="button" class="btn-sm btn-outline-success">Register</button>
-        <a href="#"><small>Already have an account? Log in</small></a>
-      </form>
     </div>
+      <form>
+        <div class="form-group row">
+          <div class="col-md-3">
+            <label for="usernameFld">Username</label>
+            <input id="usernameFld" class="form-control" type="text" placeholder="Username" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3">
+            <label for="passwordFld">Password</label>
+            <input class="form-control" id="passwordFld" type="password" placeholder="Password" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3">
+            <label for="verifyPasswordFld">Verify Password</label>
+            <input class="form-control" id="verifyPasswordFld" type="password" placeholder="Re-enter password" />
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-md-3">
+          <button id="registerButton" type="button" class="btn-sm btn-outline-success">Register</button>
+          <a href="http://localhost:8080/jQuery/components/login/login.template.client.html"><small>Already have an account? Log in</small></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 alert alert-danger" role="alert" style="position: relative; margin-top: 1%; display: none;">
+          This is a column
+        </div>
+      </div>
 	</div>
 </body>
 </html>

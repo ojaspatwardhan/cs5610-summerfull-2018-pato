@@ -9,15 +9,25 @@ function UserServiceClient() {
    this.getProfile = getProfile;
    this.login = login;
    this.findUserByEmail = findUserByEmail;
+   this.logout = logout;
    this.url ='http://localhost:8080/api/user';
    var self = this;
+
+   function logout(callback) {
+     $.ajax({
+       async: false,
+       method: "POST",
+       url: "/api/logout",
+       success: callback
+     })
+   }
 
    function findUserByEmail(email, callback) {
      $.ajax({
        async: false,
        method: "GET",
        contentType: "application/json; charset=utf-8",
-       url: "http://localhost:8080/api/resetPassword/" + email,
+       url: "/api/resetPassword/" + email,
        success: callback
      })
    }
@@ -39,7 +49,7 @@ function UserServiceClient() {
        async: false,
        method: "GET",
        contentType: "application/json; charset=utf-8",
-       url: "http://localhost:8080/api/login/findUserByUsernameAndPassword/" + username + "/" + password,
+       url: "/api/login/findUserByUsernameAndPassword/" + username + "/" + password,
        success: callback,
      })
    }
@@ -49,7 +59,7 @@ function UserServiceClient() {
               async: false,
               method: "GET",
               contentType: "application/json; charset=utf-8",
-              url: "http://localhost:8080/api/profile",
+              url: "/api/profile",
               success: callback,
           });
    }
@@ -101,19 +111,19 @@ function UserServiceClient() {
 // }
 
    function findUserById(userId) {
-     return fetch(self.url + "/" + userId).then(function(response) {
+     return fetch("/api/user/" + userId).then(function(response) {
        return response.json();
      });
    }
 
    function findUserByUsername(username) {
-     return fetch(self.url + "/findUserByUsername/" + username).then(function(response) {
+     return fetch("/api/user/findUserByUsername/" + username).then(function(response) {
        return response.json();
      });
    }
 
    function updateUser(user, userId) {
-     return fetch(self.url + "/" + userId, {
+     return fetch("/api/user/" + userId, {
        method: "PUT",
        body: JSON.stringify(user),
        headers: {
@@ -130,7 +140,7 @@ function UserServiceClient() {
    }
 
    function findAllUsers() {
-     return fetch(self.url)
+     return fetch("/api/user")
      .then(function (response) {
        return response.json();
      });
@@ -147,7 +157,7 @@ function UserServiceClient() {
      // });
 
      // Local Host
-     return fetch("http://localhost:8080/api/user", {
+     return fetch("/api/user", {
        method: "POST",
        body: JSON.stringify(user),
        headers: {
@@ -157,7 +167,7 @@ function UserServiceClient() {
    }
 
    function deleteUser(userId) {
-     return fetch(self.url + "/" + userId, {
+     return fetch("/api/user/" + userId, {
        method: "DELETE"
      });
    }
