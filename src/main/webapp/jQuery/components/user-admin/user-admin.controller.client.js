@@ -25,6 +25,7 @@
 
     $("#createNewUser").click(createUser);
     $("#deleteButton").click(deleteUser);
+    $("#editBtn").click(editUser);
     $("#search").click(function() {
       var username = $("#searchFld").val();
       findUserByUsername(username);
@@ -89,6 +90,7 @@
       newEntry.find(".role").html(user.role);
       newEntry.find(".dob").html(user.dob);
       newEntry.find(".deleteButton").click(deleteUser);
+      newEntry.find(".editBtn").click(editUser);
       tbody.append(newEntry);
     }
   }
@@ -98,5 +100,22 @@
     var deleteButton = $(event.currentTarget);
     var userId = deleteButton.parent().parent().attr("id");
     userService.deleteUser(userId).then(findAllUsers);
+  }
+
+  function editUser(event) {
+    var userService = new UserServiceClient();
+    var editBtn = $(event.currentTarget);
+    var userId = editBtn.parent().parent().attr("id");
+    alert(userId);
+    userService.editUser(userId, showProfilePage);
+  }
+
+  // Function to show Profile of the user page after the user is returned by /api/user/userId
+  function showProfilePage() {
+    // localhost location
+    window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
+
+    // Heroku loaction
+    // window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html";
   }
 }());

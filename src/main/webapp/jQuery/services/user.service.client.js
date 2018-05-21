@@ -10,8 +10,18 @@ function UserServiceClient() {
    this.login = login;
    this.findUserByEmail = findUserByEmail;
    this.logout = logout;
+   this.editUser = editUser;
    this.url ='http://localhost:8080/api/user';
    var self = this;
+
+   function editUser(userId, callback) {
+     $.ajax({
+       async: false,
+       method: "POST",
+       url: "/api/edit/" + userId,
+       success: callback
+     })
+   }
 
    function logout(callback) {
      $.ajax({

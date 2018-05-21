@@ -131,4 +131,18 @@ public class UserService {
 		session.invalidate();
 		return "Logged out";
 	}
+	
+	@PostMapping("/api/edit/{userId}")
+	public String editUser(@PathVariable("userId") int userId, HttpSession session) {
+		Optional<User> data = repository.findById(userId);
+		if(data.isPresent()) {
+			User user = data.get();
+			System.out.println(user);
+			session.setAttribute("id", user);
+			return "Success";
+		}
+		else {
+			return "Failure";
+		}
+	}
 }
