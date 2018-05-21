@@ -106,16 +106,15 @@
     var userService = new UserServiceClient();
     var editBtn = $(event.currentTarget);
     var userId = editBtn.parent().parent().attr("id");
-    alert(userId);
     userService.editUser(userId, showProfilePage);
   }
 
   // Function to show Profile of the user page after the user is returned by /api/user/userId
   function showProfilePage() {
     // localhost location
-    window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
+    // window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
 
     // Heroku loaction
-    // window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html";
+    window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html";
   }
 }());
