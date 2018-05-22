@@ -72,7 +72,8 @@ public class UserService {
 	
 	@RequestMapping(value = "/api/user/findUserByUsername/{username}", method = RequestMethod.GET)
 	public List<User> findUserByUsername(@PathVariable("username") String username) {
-		return (List<User>) repository.findUserByUsername(username);
+		String newUsername = "%" + username + "%";
+		return (List<User>) repository.findUserByUsername(newUsername);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8080")

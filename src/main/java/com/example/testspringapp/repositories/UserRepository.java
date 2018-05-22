@@ -10,7 +10,7 @@ import com.example.testspringapp.models.User;
 import java.util.List;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
-	@Query(value = "SELECT * FROM user WHERE user.username = :searchTerm", nativeQuery = true)
+	@Query(value = "SELECT * FROM user WHERE user.username LIKE :searchTerm", nativeQuery = true)
 	List<User>findUserByUsername(@Param("searchTerm") String searchTerm);
 	
 	@Query(value = "SELECT * FROM user WHERE user.username = :username AND user.password = :password", nativeQuery = true)

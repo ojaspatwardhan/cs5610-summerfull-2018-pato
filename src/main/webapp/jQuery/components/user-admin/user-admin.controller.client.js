@@ -61,16 +61,18 @@
     var phone = $("#phoneFld").val();
     var email = $("#emailFld").val();
 
-    var user = {
-      username: username,
-      firstName: firstName,
-      lastName: lastName,
-      password: password,
-      email: email,
-      phone: phone,
-      role: role,
-      dob: dob
-    };
+    var user = new User(firstName, lastName, username, password, role, dob, phone, email);
+
+    // var user = {
+    //   username: username,
+    //   firstName: firstName,
+    //   lastName: lastName,
+    //   password: password,
+    //   email: email,
+    //   phone: phone,
+    //   role: role,
+    //   dob: dob
+    // };
 
     userService.createUser(user).then(findAllUsers);
   }
@@ -112,9 +114,9 @@
   // Function to show Profile of the user page after the user is returned by /api/user/userId
   function showProfilePage() {
     // localhost location
-    // window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
+    window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
 
     // Heroku loaction
-    window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html";
+    // window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html";
   }
 }());

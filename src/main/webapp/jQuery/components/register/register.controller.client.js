@@ -12,10 +12,13 @@
     $verifyPasswordFld = $("#verifyPasswordFld");
 
     $("#registerButton").click(function() {
-      var user = {
-        username: $usernameFld.val(),
-        password: $passwordFld.val(),
-      };
+      var username = $usernameFld.val();
+      var password = $passwordFld.val();
+      var user = new User("", "", username, password, "", "", "", "");
+      // var user = {
+      //   username: $usernameFld.val(),
+      //   password: $passwordFld.val(),
+      // };
       register(user);
     });
 
@@ -56,10 +59,10 @@
     else {
 
       // localhost location
-      // window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
+      window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
 
       // Heroku Location
-      window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html";
+      // window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html";
     }
   }
 }());
