@@ -144,7 +144,6 @@
   }
 
   function success(response) {
-    alert(response.password);
     findAllUsers();
   }
 }());
