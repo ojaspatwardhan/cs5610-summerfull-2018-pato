@@ -79,7 +79,7 @@ public class UserService {
 	
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/api/profile")
-	public User getProfile(HttpSession session) {
+	public User updateProfile(HttpSession session) {
 		System.out.println("Inside getProfile");
 		System.out.println(session.getAttribute("id"));
 		return (User)session.getAttribute("id");

@@ -51,7 +51,7 @@
   function getProfile() {
     var userService = new UserServiceClient();
 
-    userService.getProfile(function(response){
+    userService.updateProfile(function(response){
       findUserById(response.id)
       id = response.id;
       password = response.password

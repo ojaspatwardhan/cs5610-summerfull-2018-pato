@@ -6,7 +6,7 @@ function UserServiceClient() {
    this.updateUser = updateUser;
    this.findUserByUsername = findUserByUsername;
    this.register = register;
-   this.getProfile = getProfile;
+   this.updateProfile = updateProfile;
    this.login = login;
    this.findUserByEmail = findUserByEmail;
    this.logout = logout;
@@ -64,7 +64,7 @@ function UserServiceClient() {
      })
    }
 
-   function getProfile(callback) {
+   function updateProfile(callback) {
      $.ajax({
               async: false,
               method: "GET",
