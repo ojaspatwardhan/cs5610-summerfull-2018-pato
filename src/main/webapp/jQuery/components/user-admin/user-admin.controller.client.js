@@ -140,8 +140,7 @@
     user.setRole($("#role").val());
     user.setPassword($("#password").val());
 
-    alert($("#password").val());
-    alert(id);
+    alert(user.getPassword);
 
     userService.updateUser(user, id).then(success);
   }
