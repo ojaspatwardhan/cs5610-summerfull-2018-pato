@@ -57,9 +57,9 @@ function UserServiceClient() {
    function login(username, password, callback) {
      $.ajax({
        async: false,
-       method: "GET",
+       method: "POST",
        contentType: "application/json; charset=utf-8",
-       url: "/api/login/findUserByUsernameAndPassword/" + username + "/" + password,
+       url: "/api/login/" + username + "/" + password,
        success: callback,
      })
    }

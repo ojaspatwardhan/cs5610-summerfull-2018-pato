@@ -85,8 +85,8 @@ public class UserService {
 		return (User)session.getAttribute("id");
 	}
 	
-	@RequestMapping(value = "/api/login/findUserByUsernameAndPassword/{username}/{password}", method = RequestMethod.GET)
-	public User findUserByUsernameAndPassword(@PathVariable("username") String username, @PathVariable("password") String password, HttpSession session) {
+	@RequestMapping(value = "/api/login/{username}/{password}", method = RequestMethod.POST)
+	public User login(@PathVariable("username") String username, @PathVariable("password") String password, HttpSession session) {
 		User user = (User)repository.findUserByUsernameAndPassword(username, password);
 		System.out.println(user);
 		session.setAttribute("id", user);
