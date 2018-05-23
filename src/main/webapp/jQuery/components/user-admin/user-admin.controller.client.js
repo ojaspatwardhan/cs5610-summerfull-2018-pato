@@ -25,7 +25,7 @@
 
     $("#createNewUser").click(createUser);
     $("#deleteButton").click(deleteUser);
-    $(".editBtn").click(editUser);
+    // $(".editBtn").click(editUser);
     $("#search").click(function() {
       var username = $("#searchFld").val();
       findUserByUsername(username);
@@ -61,18 +61,16 @@
     var phone = $("#phoneFld").val();
     var email = $("#emailFld").val();
 
-    var user = new User(firstName, lastName, username, password, role, dob, phone, email);
-
-    // var user = {
-    //   username: username,
-    //   firstName: firstName,
-    //   lastName: lastName,
-    //   password: password,
-    //   email: email,
-    //   phone: phone,
-    //   role: role,
-    //   dob: dob
-    // };
+    var user = {
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+      email: email,
+      phone: phone,
+      role: role,
+      dob: dob
+    };
 
     userService.createUser(user).then(findAllUsers);
   }
@@ -121,16 +119,19 @@
     $("#password").val(response.password);
     $("#phone").val(response.phone);
     $("#role").val(response.role);
-
+    $("#id").val(response.id)
     $("#updateUser").click(function() {
-      updateUser(response.id);
+      updateUser();
     });
   }
 
   function updateUser(id) {
     var userService = new UserServiceClient();
 
+    var id = $("#id").val();
+
     var user = new User();
+    user.setId($("#id").val());
     user.setFirstName($("#firstName").val());
     user.setLastName($("#lastName").val());
     user.setDob($("#dob").val());
@@ -143,7 +144,20 @@
     userService.updateUser(user, id).then(success);
   }
 
+  function resetValues() {
+    $("#firstName").val("");
+    $("#lastName").val("");
+    $("#username").val("");
+    $("#editEmail").val("");
+    $("#dob").val("");
+    $("#password").val("");
+    $("#phone").val("");
+    $("#role").val("");
+    $("#id").val("");
+  }
+
   function success(response) {
+    resetValues();
     findAllUsers();
   }
 }());

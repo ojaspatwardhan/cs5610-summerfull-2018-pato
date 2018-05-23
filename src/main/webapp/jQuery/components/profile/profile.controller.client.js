@@ -11,6 +11,7 @@
   var $lastName;
   var $updateButton;
   var id;
+  var password;
 
 
   function init() {
@@ -53,6 +54,7 @@
     userService.getProfile(function(response){
       findUserById(response.id)
       id = response.id;
+      password = response.password
     });
   }
 
@@ -60,6 +62,7 @@
     var userService = new UserServiceClient();
 
     var user = new User();
+    user.setId(id);
     user.setFirstName($("#firstName").val());
     user.setLastName($("#lastName").val());
     user.setDob($("#dob").val());
@@ -67,6 +70,7 @@
     user.setUsername($("#username").val());
     user.setPhone($("#phone").val());
     user.setRole($("#role").val());
+    user.setPassword(password);
 
     userService.updateUser(user, id).then(success);
   }

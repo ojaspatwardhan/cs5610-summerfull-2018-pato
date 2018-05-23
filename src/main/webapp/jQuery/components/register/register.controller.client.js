@@ -14,7 +14,7 @@
     $("#registerButton").click(function() {
       var username = $usernameFld.val();
       var password = $passwordFld.val();
-      var user = new User("", "", username, password, "", "", "", "");
+      var user = new User("" ,"", "", username, password, "", "", "", "");
       // var user = {
       //   username: $usernameFld.val(),
       //   password: $passwordFld.val(),

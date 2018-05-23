@@ -6,7 +6,7 @@
   function init() {
     $("#resetPasswordBtn").click(function() {
       var email = $("#forgotPasswordEmail").val();
-      var user = new User("", "", "", "", "", "", "", email);
+      var user = new User("" ,"", "", "", "", "", "", "", email);
       // var user = {
       //   email: email
       // };
