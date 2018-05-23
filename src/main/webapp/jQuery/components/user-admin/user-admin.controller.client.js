@@ -25,7 +25,7 @@
 
     $("#createNewUser").click(createUser);
     $("#deleteButton").click(deleteUser);
-    $("#editBtn").click(editUser);
+    $(".editBtn").click(editUser);
     $("#search").click(function() {
       var username = $("#searchFld").val();
       findUserByUsername(username);
@@ -108,15 +108,42 @@
     var userService = new UserServiceClient();
     var editBtn = $(event.currentTarget);
     var userId = editBtn.parent().parent().attr("id");
-    userService.editUser(userId, showProfilePage);
+    userService.findUserById(userId).then(showProfile);
   }
 
   // Function to show Profile of the user page after the user is returned by /api/user/userId
-  function showProfilePage() {
-    // localhost location
-    window.location = "http://localhost:8080/jQuery/components/profile/profile.template.client.html";
+  function showProfile(response) {
+    $("#firstName").val(response.firstName);
+    $("#lastName").val(response.lastName);
+    $("#username").val(response.username);
+    $("#editEmail").val(response.email);
+    $("#dob").val(response.dob);
+    $("#password").val(response.password);
+    $("#phone").val(response.phone);
+    $("#role").val(response.role);
 
-    // Heroku loaction
-    // window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/profile/profile.template.client.html";
+    $("#updateUser").click(function() {
+      updateUser(response.id);
+    });
+  }
+
+  function updateUser(id) {
+    var userService = new UserServiceClient();
+
+    var user = new User();
+    user.setFirstName($("#firstName").val());
+    user.setLastName($("#lastName").val());
+    user.setDob($("#dob").val());
+    user.setEmail($("#editEmail").val());
+    user.setUsername($("#username").val());
+    user.setPhone($("#phone").val());
+    user.setRole($("#role").val());
+    user.setPassword($("#password").val());
+
+    userService.updateUser(user, id).then(success);
+  }
+
+  function success(response) {
+    findAllUsers();
   }
 }());

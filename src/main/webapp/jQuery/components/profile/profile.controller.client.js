@@ -40,10 +40,10 @@
   function logoutMessage(response) {
 
     // localhost Location
-    window.location = "http://localhost:8080/jQuery/components/login/login.template.client.html";
+    // window.location = "http://localhost:8080/jQuery/components/login/login.template.client.html";
 
     // Heroku location
-    // window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/login/login.template.client.html";
+    window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/login/login.template.client.html";
     alert(response);
   }
 
@@ -67,16 +67,6 @@
     user.setUsername($("#username").val());
     user.setPhone($("#phone").val());
     user.setRole($("#role").val());
-
-    // var user = {
-    //   firstName: $firstName.val(),
-    //   lastName: $lastName.val(),
-    //   email: $email.val(),
-    //   phone: $phone.val(),
-    //   role: $role.val(),
-    //   dob: $dob.val(),
-    //   username: $username.val()
-    // };
 
     userService.updateUser(user, id).then(success);
   }

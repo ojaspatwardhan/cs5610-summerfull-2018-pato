@@ -102,6 +102,87 @@
   </div>
 </div>
 <!-- Add User Modal End -->
+
+<!-- Edit User Modal Start -->
+<div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<input class="form-control" type="text" placeholder="Username" id="username" />
+					</div>
+				</div>
+				<div class="row" style="position: relative; margin-top: 4%;">
+					<div class="col-md-12">
+						<input class="form-control" type="text" placeholder="Password" id="password" />
+					</div>
+				</div>
+				<div class="row" style="position: relative; margin-top: 4%;">
+					<div class="col-md-12">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">First Name & Last Name</span>
+							</div>
+							<input type="text" class="form-control" id="firstName" />
+							<input type="text" class="form-control" id="lastName" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group mb-3">
+							<input id="editEmail" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email1">
+						<div class="input-group-append">
+							<span class="input-group-text" id="email1">@example.com</span>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<input id="phone" class="form-control" type="text" placeholder="Phone Number" />
+					</div>
+				</div>
+				<div class="row" style="position: relative; margin-top: 4%;">
+					<div class="col-md-12">
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text" for="role">Role</span>
+							</div>
+							<select class="custom-select" id="role" required>
+								<option selected>
+									Faculty
+								</option>
+								<option>
+									Student
+								</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<input id="dob" class="form-control" type="date" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-md btn-danger" data-dismiss="modal">Discard Changes</button>
+			<button type="button" class="btn btn-md btn-success" id="updateUser" data-dismiss="modal">Update User</button>
+		</div>
+	</div>
+</div>
+</div>
+<!-- Edit User Modal End -->
 	<div class = "container-fluid">
 		<div class = "row">
 			<div class="col-sm-12">
@@ -175,7 +256,7 @@
 								<button class="btn btn-md btn-danger deleteButton">Delete User</button>
 							</td>
 							<td>
-								<button class="btn tbn-md btn-outline-dark editBtn">Edit</button>
+								<button class="btn btn-md btn-outline-dark editBtn" data-toggle="modal" data-target="#editUser">Edit</button>
 							</td>
 						</tr>
 					</tbody>
