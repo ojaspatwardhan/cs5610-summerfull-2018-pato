@@ -140,12 +140,11 @@
     user.setRole($("#role").val());
     user.setPassword($("#password").val());
 
-    alert(user.getPassword());
-
     userService.updateUser(user, id).then(success);
   }
 
   function success(response) {
+    alert(response.password);
     findAllUsers();
   }
 }());
