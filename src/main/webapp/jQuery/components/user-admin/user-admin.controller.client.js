@@ -141,6 +141,7 @@
     user.setPassword($("#password").val());
 
     alert($("#password").val());
+    alert(id);
 
     userService.updateUser(user, id).then(success);
   }
