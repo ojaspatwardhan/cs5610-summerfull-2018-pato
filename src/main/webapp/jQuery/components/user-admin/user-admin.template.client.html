@@ -58,16 +58,30 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="input-group mb-3">
-  							<input id="emailFld" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email">
+  							<input id="emailFld" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email" required />
   						<div class="input-group-append">
     						<span class="input-group-text" id="email">@example.com</span>
   						</div>
 							</div>
 						</div>
 					</div>
+					<div class="row" style="margin-top: 3%;">
+						<div class="col-md-12">
+							<div id="emailAlert" class="alert alert-danger" role="alert" style="display: none;">
+								Please enter a valid email.
+							</div>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<input id="phoneFld" class="form-control" type="text" placeholder="Phone Number" />
+							<input id="phoneFld" class="form-control" type="number" placeholder="Phone Number" maxlength="10" required />
+						</div>
+					</div>
+					<div class="row" style="margin-top: 5%;">
+						<div class="col-md-12">
+							<div id="phoneAlert" class="alert alert-danger" role="alert" style="display: none;">
+								Please enter a valid phone number.
+							</div>
 						</div>
 					</div>
 					<div class="row" style="position: relative; margin-top: 4%;">
@@ -139,16 +153,30 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="input-group mb-3">
-							<input id="editEmail" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email1">
+							<input id="editEmail" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email1" required />
 						<div class="input-group-append">
 							<span class="input-group-text" id="email1">@example.com</span>
 						</div>
 						</div>
 					</div>
 				</div>
+				<div class="row" style="margin-top: 3%;">
+					<div class="col-md-12">
+						<div id="emailEditAlert" class="alert alert-danger" role="alert" style="display: none;">
+							Please enter a valid email.
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<input id="phone" class="form-control" type="text" placeholder="Phone Number" />
+						<input id="phone" class="form-control" type="number" placeholder="Phone Number" maxlength="10" required />
+					</div>
+				</div>
+				<div class="row" style="margin-top: 5%;">
+					<div class="col-md-12">
+						<div id="phoneEditAlert" class="alert alert-danger" role="alert" style="display: none;">
+							Please enter a valid phone number.
+						</div>
 					</div>
 				</div>
 				<div class="row" style="position: relative; margin-top: 4%;">
@@ -206,15 +234,15 @@
 							<th>
 								Password
 							</th>
-							<th>
+							<!-- <th>
 								Email
-							</th>
-							<th>
+							</th> -->
+							<!-- <th>
 								Birthdate
-							</th>
-							<th>
+							</th> -->
+							<!-- <th>
 								Phone
-							</th>
+							</th> -->
 							<th>
 								Role
 							</th>
@@ -245,13 +273,13 @@
 							<td class="password">
 
 							</td>
-							<td class="email">
+							<!-- <td class="email">
 
 							</td>
 							<td class="dob">
 
 							</td>
-							<td class="phone">
+							<td class="phone"> -->
 
 							</td>
 							<td class="role">

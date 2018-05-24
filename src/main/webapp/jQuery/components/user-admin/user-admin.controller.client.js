@@ -8,6 +8,72 @@
 
   function main() {
 
+    $("#phoneFld").keyup(function() {
+      var mobNum = $(this).val();
+      var filter = new RegExp(/^\d*(?:\.\d{1,2})?$/);
+
+      $("#phoneAlert").show(500);
+
+      if(filter.test(mobNum)) {
+        if(mobNum.length == 10) {
+          $("#phoneAlert").attr("class", "alert alert-success").html("Valid phone number");
+        }
+        else {
+          $("#phoneAlert").attr("class", "alert alert-danger").html("Please enter valid phone number");
+        }
+      }
+      else {
+        alert("Invalid");
+      }
+    });
+
+    $("#emailFld").keyup(function() {
+      var emailId = $(this).val();
+      var filter = new RegExp(/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/);
+
+      $("#emailAlert").show(500);
+
+      if(filter.test(emailId)) {
+        $("#emailAlert").attr("class", "alert alert-success").html("Valid email");
+      }
+      else {
+        $("#emailAlert").attr("class", "alert alert-danger").html("Please enter valid email");
+      }
+    });
+
+    $("#phone").keyup(function() {
+      var mobNum = $(this).val();
+      var filter = new RegExp(/^\d*(?:\.\d{1,2})?$/);
+
+      $("#phoneEditAlert").show(500);
+
+      if(filter.test(mobNum)) {
+        if(mobNum.length == 10) {
+          $("#phoneEditAlert").attr("class", "alert alert-success").html("Valid phone number");
+        }
+        else {
+          $("#phoneEditAlert").attr("class", "alert alert-danger").html("Please enter valid phone number");
+        }
+      }
+      else {
+        alert("Invalid");
+      }
+    });
+
+    $("#editEmail").keyup(function() {
+      var emailId = $(this).val();
+      var filter = new RegExp(/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/);
+
+      $("#emailEditAlert").show(500);
+
+      if(filter.test(emailId)) {
+        $("#emailEditAlert").attr("class", "alert alert-success").html("Valid email");
+      }
+      else {
+        $("#emailEditAlert").attr("class", "alert alert-danger").html("Please enter valid email");
+      }
+    });
+
     // Local Host
     // var promise = fetch("http://localhost:8080/api/user");
 
@@ -85,14 +151,15 @@
       newEntry.find(".firstName").html(user.firstName);
       newEntry.find(".lastName").html(user.lastName);
       newEntry.find(".password").html(user.password);
-      newEntry.find(".email").html(user.email);
-      newEntry.find(".phone").html(user.phone);
+      // newEntry.find(".email").html(user.email);
+      // newEntry.find(".phone").html(user.phone);
       newEntry.find(".role").html(user.role);
-      newEntry.find(".dob").html(user.dob);
+      // newEntry.find(".dob").html(user.dob);
       newEntry.find(".deleteButton").click(deleteUser);
       newEntry.find(".editBtn").click(editUser);
       tbody.append(newEntry);
     }
+    resetAddValues();
   }
 
   function deleteUser(event) {
@@ -144,20 +211,35 @@
     userService.updateUser(user, id).then(success);
   }
 
-  function resetValues() {
+  function resetEditValues() {
     $("#firstName").val("");
     $("#lastName").val("");
     $("#username").val("");
-    $("#editEmail").val("");
+    $("#emailFld").val("");
     $("#dob").val("");
     $("#password").val("");
     $("#phone").val("");
     $("#role").val("");
     $("#id").val("");
+    $("#phoneEditAlert").css("display", "none");
+    $("#emailEditAlert").css("display", "none");
+  }
+
+  function resetAddValues() {
+    $("#firstNameFld").val("");
+    $("#lastNameFld").val("");
+    $("#usernameFld").val("");
+    $("#emailFld").val("");
+    $("#dobFld").val("");
+    $("#passwordFld").val("");
+    $("#phoneFld").val("");
+    $("#roleFld").val("");
+    $("#phoneAlert").css("display", "none");
+    $("#emailAlert").css("display", "none");
   }
 
   function success(response) {
-    resetValues();
+    resetEditValues();
     findAllUsers();
   }
 }());
