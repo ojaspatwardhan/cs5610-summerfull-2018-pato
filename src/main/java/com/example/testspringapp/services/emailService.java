@@ -43,7 +43,7 @@ public class emailService {
 					InternetAddress.parse(receiver));
 			message.setSubject("Password Reset");
 			message.setText("Dear" + " " + user.getUsername() + "," + 
-					"\n\n Your current password is" + " " + user.getPassword());
+					"\n\n Your current password is" + " " + user.getPassword() + " " + "click on the link below to reset your password" + " " + "\n \n" + " " + "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/resetPassword/resetPassword.template.client.html");
 
 			Transport.send(message);
 
