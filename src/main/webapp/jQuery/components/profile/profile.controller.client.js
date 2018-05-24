@@ -41,10 +41,10 @@
   function logoutMessage(response) {
 
     // localhost Location
-    window.location = "http://localhost:8080/jQuery/components/login/login.template.client.html";
+    // window.location = "http://localhost:8080/jQuery/components/login/login.template.client.html";
 
     // Heroku location
-    // window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/login/login.template.client.html";
+    window.location = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/jQuery/components/login/login.template.client.html";
     alert(response);
   }
 
