@@ -23,6 +23,7 @@ import com.example.testspringapp.repositories.CourseRepository;
 import com.example.testspringapp.repositories.UserRepository;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class CourseServices {
 	@Autowired
 	CourseRepository courseRepository;
@@ -30,5 +31,10 @@ public class CourseServices {
 	@GetMapping("/api/course")
 	public Iterable<Course> findAllCourses() {
 		return courseRepository.findAll();
+	}
+	
+	@PostMapping("/api/course")
+	public Course createCourse(@RequestBody Course course) {
+		return courseRepository.save(course);
 	}
 }
