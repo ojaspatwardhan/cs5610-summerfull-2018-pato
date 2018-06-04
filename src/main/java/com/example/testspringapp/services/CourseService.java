@@ -46,4 +46,19 @@ public class CourseService {
 	public void deleteCourse(@PathVariable("courseId") int id) {
 		courseRepository.deleteById(id);
 	}
+	
+	@GetMapping("api/course/{id}")
+	public Course findCourseById(@PathVariable("id") int courseId) {
+		Optional<Course> data = courseRepository.findById(courseId);
+		if(data.isPresent()) {
+			return data.get();
+		}
+		return null;
+	}
+	
+	@RequestMapping(value = "api/course/findCourseByCourseName/{courseName}", method = RequestMethod.GET)
+	public List<Course> findCourseByCourseName(@PathVariable("courseName") String courseName) {
+		String newCourseName = "%" + courseName + "%";
+		return (List<Course>) courseRepository.findCourseByCourseName(newCourseName);
+	}
 }
