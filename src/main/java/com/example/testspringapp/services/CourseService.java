@@ -24,7 +24,7 @@ import com.example.testspringapp.repositories.UserRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class CourseServices {
+public class CourseService {
 	@Autowired
 	CourseRepository courseRepository;
 	
@@ -35,6 +35,15 @@ public class CourseServices {
 	
 	@PostMapping("/api/course")
 	public Course createCourse(@RequestBody Course course) {
+		java.util.Date d = new java.util.Date();
+		java.sql.Date sd = new java.sql.Date(d.getTime());
+		course.setCreated(sd);
+		course.setModified(sd);
 		return courseRepository.save(course);
+	}
+	
+	@DeleteMapping("/api/course/{courseId}")
+	public void deleteCourse(@PathVariable("courseId") int id) {
+		courseRepository.deleteById(id);
 	}
 }
