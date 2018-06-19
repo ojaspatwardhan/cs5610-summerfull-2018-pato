@@ -1,5 +1,7 @@
 package com.example.testspringapp.models;
 
+import java.util.List;
+
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -12,6 +14,8 @@ public class Lesson {
   @ManyToOne
   @JsonIgnore
   private Module module;
+  @OneToMany(mappedBy="lesson", cascade=CascadeType.REMOVE)
+  private List<Widget> widgets;
   
 public int getId() {
 	return id;
