@@ -15,6 +15,7 @@ public class Widget {
 	private int size;
 	private int listType;
 	private String linkText;
+	private String widgetOrder;
 	@ManyToOne
 	@JsonIgnore
 	private Lesson lesson;
@@ -67,4 +68,11 @@ public class Widget {
 	public void setLinkText(String linkText) {
 		this.linkText = linkText;
 	}
+	public String getWidgetOrder() {
+		return widgetOrder;
+	}
+	public void setWidgetOrder(String widgetOrder) {
+		this.widgetOrder = widgetOrder;
+	}
+	
 }

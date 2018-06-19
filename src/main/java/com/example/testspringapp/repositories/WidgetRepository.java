@@ -10,6 +10,6 @@ import org.springframework.data.repository.query.Param;
 import com.example.testspringapp.models.Widget;
 
 public interface WidgetRepository extends CrudRepository<Widget, Integer> {
-	@Query(value = "SELECT * from widget WHERE widget.lesson_id = :lessonId", nativeQuery = true)
+	@Query(value = "SELECT * from widget WHERE widget.lesson_id = :lessonId ORDER BY widget.widget_order", nativeQuery = true)
 	List<Widget> findAllWidgetsForLesson(@Param("lessonId") int lessonId);
 }
