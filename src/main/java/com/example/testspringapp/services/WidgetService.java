@@ -3,6 +3,8 @@ package com.example.testspringapp.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.testspringapp.models.Widget;
+import com.example.testspringapp.models.Course;
 import com.example.testspringapp.models.Lesson;
 import com.example.testspringapp.repositories.WidgetRepository;
 import com.example.testspringapp.repositories.LessonRepository;
@@ -46,6 +49,15 @@ public class WidgetService {
 		}
 	}
 	
+	@GetMapping("api/widget/findWidgetById/{widgetId}")
+	public Widget findWidgetById(@PathVariable("widgetId") int widgetId) {
+		Optional<Widget> data = widgetRepository.findById(widgetId);
+		if(data.isPresent()) {
+			return data.get();
+		}
+		return null;
+	}
+	
 	@GetMapping("/api/widget/{lessonId}")
 	public List<Widget> findAllWidgetsForLesson(@PathVariable("lessonId") int lessonId) {
 		return (List<Widget>)widgetRepository.findAllWidgetsForLesson(lessonId);
@@ -55,5 +67,4 @@ public class WidgetService {
 	public void deleteWidget(@PathVariable("widgetId") int widgetId) {
 		widgetRepository.deleteById(widgetId);
 	}
-
 }
