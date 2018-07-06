@@ -50,6 +50,19 @@ public class AssignmentService {
 		return null;
 	}
 	
+	
+	@PutMapping("/api/lesson/{lessonId}/assignment")
+	public Assignment updateAssignment(@PathVariable("lessonId") int lessonId, @RequestBody Assignment newAssignment) {
+		Optional<Lesson> data = lessonRepository.findById(lessonId);
+		
+		if(data.isPresent()) {
+			Lesson lesson = data.get();
+			newAssignment.setLesson(lesson);
+			return assignmentRepository.save(newAssignment);
+		}
+		return null;
+	}
+	
 	@GetMapping("/api/assignment")
 	public Iterable<Assignment> findAllAssignments() {
 		return assignmentRepository.findAll();
