@@ -15,6 +15,7 @@ public class Course {
 	private int id;
 	private String title;
 	private String owner;
+	private String type;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -59,5 +60,11 @@ public class Course {
 	}
 	public void setModified(Date modified) {
 		this.modified = modified;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 }
